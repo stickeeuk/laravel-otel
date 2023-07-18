@@ -4,7 +4,7 @@ namespace PlunkettScott\LaravelOpenTelemetry\Watchers;
 
 use InvalidArgumentException;
 
-abstract readonly class WatcherOptions
+abstract class WatcherOptions
 {
     abstract public static function fromArray(array $options): self;
 

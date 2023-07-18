@@ -2,10 +2,10 @@
 
 namespace PlunkettScott\LaravelOpenTelemetry\Watchers;
 
-readonly class EventWatcherOptions extends WatcherOptions
+class EventWatcherOptions extends WatcherOptions
 {
     public function __construct(
-        public array $ignored = [],
+        public readonly array $ignored = [],
     ) {
     }
 

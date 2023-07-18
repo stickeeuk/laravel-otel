@@ -2,7 +2,7 @@
 
 namespace PlunkettScott\LaravelOpenTelemetry\Watchers;
 
-final readonly class RequestWatcherOptions extends WatcherOptions
+final class RequestWatcherOptions extends WatcherOptions
 {
     /**
      * @param bool $continue_trace Whether to continue the trace if a trace header is present in the request. If false, a new trace will be started for each request, even if the request is part of a trace.
@@ -10,9 +10,9 @@ final readonly class RequestWatcherOptions extends WatcherOptions
      * @param bool $record_user Whether to record the authenticated User in the span attributes. If true, the user's ID will be recorded in the span attributes, and any attributes specified in $record_user_attributes will also be recorded.
      */
     public function __construct(
-        public bool $continue_trace = true,
-        public bool $record_route = true,
-        public bool $record_user = true,
+        public readonly bool $continue_trace = true,
+        public readonly bool $record_route = true,
+        public readonly bool $record_user = true,
     ) {
     }
 
