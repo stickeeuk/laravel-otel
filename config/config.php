@@ -1,8 +1,8 @@
 <?php
 
 use PlunkettScott\LaravelOpenTelemetry\Enums;
-use PlunkettScott\LaravelOpenTelemetry\Watchers;
 use PlunkettScott\LaravelOpenTelemetry\Resolvers;
+use PlunkettScott\LaravelOpenTelemetry\Watchers;
 
 return [
 
@@ -34,35 +34,35 @@ return [
         Watchers\QueryWatcher::class => [
             'enabled' => env('OTEL_WATCHER_QUERY_ENABLED', true),
             'options' => (new Watchers\QueryWatcherOptions(
-                record_sql: env('OTEL_WATCHER_QUERY_RECORD_SQL', true),
-                ignore_sql_strings: [
+                env('OTEL_WATCHER_QUERY_RECORD_SQL', true),
+                [
                     'telescope',
                 ],
-                ignore_sql_regex: [],
+                [],
             ))->toArray(),
         ],
 
         Watchers\LogWatcher::class => [
             'enabled' => env('OTEL_WATCHER_LOG_ENABLED', true),
             'options' => (new Watchers\LogWatcherOptions(
-                min_level: env('OTEL_WATCHER_LOG_MIN_LEVEL', \Psr\Log\LogLevel::ERROR),
-                max_message_length: env('OTEL_WATCHER_LOG_MAX_MESSAGE_LENGTH', -1),
-                record_context: env('OTEL_WATCHER_LOG_RECORD_CONTEXT', true),
+                env('OTEL_WATCHER_LOG_MIN_LEVEL', \Psr\Log\LogLevel::ERROR),
+                env('OTEL_WATCHER_LOG_MAX_MESSAGE_LENGTH', -1),
+                env('OTEL_WATCHER_LOG_RECORD_CONTEXT', true),
             ))->toArray(),
         ],
 
         Watchers\ExceptionWatcher::class => [
             'enabled' => env('OTEL_WATCHER_EXCEPTION_ENABLED', false),
             'options' => (new Watchers\ExceptionWatcherOptions(
-                ignored: [],
+                [],
             ))->toArray(),
         ],
 
         Watchers\RedisWatcher::class => [
             'enabled' => env('OTEL_WATCHER_REDIS_ENABLED', true),
             'options' => (new Watchers\RedisWatcherOptions(
-                record_command: env('OTEL_WATCHER_REDIS_RECORD_COMMAND', true),
-                ignore_commands: [
+                env('OTEL_WATCHER_REDIS_RECORD_COMMAND', true),
+                [
                     'pipeline',
                     'transaction',
                 ],
@@ -72,50 +72,50 @@ return [
         Watchers\RequestWatcher::class => [
             'enabled' => env('OTEL_WATCHER_REQUEST_ENABLED', true),
             'options' => (new Watchers\RequestWatcherOptions(
-                continue_trace: env('OTEL_WATCHER_REQUEST_CONTINUE_TRACE', true),
-                record_route: true,
-                record_user: true,
+                env('OTEL_WATCHER_REQUEST_CONTINUE_TRACE', true),
+                true,
+                true,
             ))->toArray(),
         ],
 
         Watchers\ClientRequestWatcher::class => [
             'enabled' => env('OTEL_WATCHER_CLIENT_REQUEST_ENABLED', true),
             'options' => (new Watchers\ClientRequestWatcherOptions(
-                record_errors: env('OTEL_WATCHER_CLIENT_REQUEST_RECORD_ERRORS', true),
-                record_errors_except_statuses: [],
+                env('OTEL_WATCHER_CLIENT_REQUEST_RECORD_ERRORS', true),
+                [],
             ))->toArray(),
         ],
 
         Watchers\CacheWatcher::class => [
             'enabled' => env('OTEL_WATCHER_CACHE_ENABLED', true),
             'options' => (new Watchers\CacheWatcherOptions(
-                record_cache_hit: true,
-                record_cache_miss: true,
-                record_cache_set: true,
-                record_cache_forget: true,
-                ignored: [],
+                true,
+                true,
+                true,
+                true,
+                [],
             ))->toArray(),
         ],
 
         Watchers\EventWatcher::class => [
             'enabled' => env('OTEL_WATCHER_EVENT_ENABLED', true),
             'options' => (new Watchers\EventWatcherOptions(
-                ignored: [],
+                [],
             ))->toArray(),
         ],
 
         Watchers\QueueWatcher::class => [
             'enabled' => env('OTEL_WATCHER_QUEUE_ENABLED', true),
             'options' => (new Watchers\QueueWatcherOptions(
-                trace_by_default: true,
-                ignored: [],
+                true,
+                [],
             ))->toArray(),
         ],
 
         Watchers\ScheduleWatcher::class => [
             'enabled' => env('OTEL_WATCHER_SCHEDULE_ENABLED', true),
             'options' => (new Watchers\ScheduleWatcherOptions(
-                record_output: false,
+                false,
             ))->toArray(),
         ],
     ],

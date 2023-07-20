@@ -67,7 +67,7 @@ class OtelServiceProvider extends OtelApplicationServiceProvider
 
         return [
             // new SimpleSpanProcessor(
-            //    exporter: new SpanExporter(
+            //    new SpanExporter(
             //        (new OtlpHttpTransportFactory())
             //            ->create('http://127.0.0.1:4318/v1/traces', 'application/x-protobuf'),
             //    ),
