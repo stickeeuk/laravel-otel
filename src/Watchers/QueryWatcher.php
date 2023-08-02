@@ -50,7 +50,7 @@ class QueryWatcher extends Watcher
         ];
 
         if ($this->option('record_sql', true)) {
-            $attributes[TraceAttributes::DB_STATEMENT] = $query->sql;
+            $attributes[TraceAttributes::DB_STATEMENT] = (string)$query->sql;
         }
 
         $span->setAttributes($attributes);
